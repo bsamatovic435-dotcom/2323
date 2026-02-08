@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тайное письмо</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("images/bg.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background: rgba(253, 246, 227, 0.95);
+  width: 92%;
+  max-width: 420px;
+  padding: 28px 22px;
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+  animation: fade 1.2s ease;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+img.photo {
+  width: 100%;
+  border-radius: 14px;
+  margin: 14px 0;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  font-size: 18px;
+  background: #7b4b3a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #5e382b;
+}
+
+.hidden {
+  display: none;
+}
+
+.heart {
+  text-align: center;
+  font-size: 26px;
+  animation: pulse 1.4s infinite;
+  margin-top: 12px;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+  <!-- ЭКРАН 1 -->
+  <div id="step1">
+    <h1>Для тебя</h1>
+    <p>
+      Это письмо привело тебя не просто сюда.<br>
+      Оно ведёт туда, где мы уже были…<br>
+      и куда всегда хочется вернуться.
+    </p>
+    <button onclick="go(2)">Продолжить</button>
+  </div>
+
+  <!-- ВОПРОС 1 -->
+  <div id="step2" class="hidden">
+    <img src="images/place1.jpg" class="photo" alt="Наше место">
+    <p><strong>Знакомое место, правда?</strong></p>
+    <button onclick="go(3)">Очень</button>
+    <button onclick="go(3)">Я сразу поняла</button>
+    <button onclick="go(3)">Наше</button>
+  </div>
+
+  <!-- ВОПРОС 2 -->
+  <div id="step3" class="hidden">
+    <img src="images/place2.jpg" class="photo" alt="Мы здесь">
+    <p><strong>Почему мы снова и снова оказываемся здесь?</strong></p>
+    <button onclick="go(4)">Из-за атмосферы</button>
+    <button onclick="go(4)">Из-за разговоров</button>
+    <button onclick="go(4)">Из-за чувства рядом</button>
+  </div>
+
+  <!-- ВОПРОС 3 -->
+  <div id="step4" class="hidden">
+    <p>
+      <strong>А если честно…<br>
+      дело ведь не в месте?</strong>
+    </p>
+    <button onclick="go(5)">Нет</button>
+    <button onclick="go(5)">Дело в нас</button>
+    <button onclick="go(5)">В том, что между нами</button>
+  </div>
+
+  <!-- ФИНАЛ -->
+  <div id="step5" class="hidden">
+    <img src="images/us.jpg" class="photo" alt="Мы">
+    <p>
+      Это ещё не конец.<br><br>
+      Совсем скоро ты получишь ещё одно письмо.<br>
+      В нём будет приглашение.<br><br>
+      И, возможно, это будет<br>
+      <strong>одно очень знакомое место…</strong><br><br>
+      Но с новым смыслом.
+    </p>
+    <div class="heart">❤</div>
+  </div>
+
+</div>
+
+<script>
+function go(step) {
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById("step" + i).classList.add("hidden");
+  }
+  document.getElementById("step" + step).classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
